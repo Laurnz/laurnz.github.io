@@ -11,9 +11,7 @@ I mean, how would you even work out mouseX (on an angled sketch a-entity)?
 Tom Smith.
 
 */
-import 'aframe';
-import 'mind-ar/dist/mindar-image-aframe.prod.js';
-import {MindARThree} from 'mind-ar/dist/mindar-image-three.prod.js';
+
 
 let x = 0
 let buffer
