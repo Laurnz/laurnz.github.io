@@ -1,79 +1,58 @@
-/*
-So, this is an attempt to feed a p5js canvas (or buffer in my case)
-to A-Frame and then put it on a plane.
-
-At the moment I call toDataURL() and then pass that as
-data....which can't be the best way, but it does seem snappy.
-
-Not worked out if you can handle mouseEvents yet. Not likely. 
-I mean, how would you even work out mouseX (on an angled sketch a-entity)?
-
-Tom Smith.
-
-*/
 
 
-let x = 0
-let buffer
-let w = 595
-let h = 842
+    let img;
+    /*
+    let img2;
+    let img3;
+    let img4;
+    let counter = 1;
+    let frameRateCounter = 1;
+    let bg_left;
+    let myFont;
+    let buffer;
+    */
+    let w = 1300
+    let h = 1860
+    const articleOne = "In 2020, Europe witnessed a staggering number of femicides with 1215 cases being reported. The term femicide refers to the killing of a woman or girl by a man, simply because of her gender. This is a shocking statistic and highlights the need for urgent action to prevent such heinous crimes from happening.\n\nThe pandemic and subsequent lockdowns are believed to have contributed to a rise in domestic violence incidents and femicides worldwide. This has brought the issue of gender-based violence to the forefront of discussions on public safety and women's rights. \n\nEuropean governments and non-governmental organizations (NGOs) are working to address the issue through various means...";
 
+    function preload(){
+        myFont = loadFont('assets/BodoniXT.ttf');
+        //bg_left = p.loadImage('/images/bg_left.png');
+        bg = loadImage('/images/bg.png');
+        buffer = createGraphics(w, h)  
+        
+    }
 
-function preload(){
-  buffer = createGraphics(w, h)  
-}
+    function setup() {
+        firstCanvas = createCanvas(1300, 1860);
+        firstCanvas.hide();
+        buffer.textFont(myFont);
 
-function setup() {
-  canvas = createCanvas(w, h)//If you noCanvas() it doesn't work.
-  canvas.hide()
-  frameRate(20)//slow it down a bit
-  
-  // Set up the buffer...
-  //buffer.background("grey")
-  
+        frameRate(30);
+        
+        //p.background(bg);
 
-  //print(buffer)
- // buffer.background("grey")
- // buffer.fill("red")
- // buffer.circle(50, 50, 200)
- // buffer.fill("cyan")
- // buffer.text("Hello!", 50, 50)
-  
-  
-  
-}
+    }
+    
 
+    function draw() {
+        buffer.fill('#7f6148');
 
-function draw(){
-  
-  // HIER p5
-  let h = hour();
-  let m = minute();
-  let s = second();
+        buffer.textSize(70);
+        buffer.text("1215 femicides in 2020!", -450, 50+450, 700);
+       
+        buffer.textSize(50);
+        buffer.text(articleOne, -450,200+450, 700);
 
-  buffer.background("white")
-  buffer.fill(0,0,255);
-  buffer.ellipse(mouseX,mouseY,200);
-  buffer.textSize(90);
-  buffer.text(h,200,200);
-  buffer.text(m,200,400);
-  buffer.text(s,200,600);
-
-
-
-  // A-FRAME SETUP
-  let data =  buffer.drawingContext.canvas.toDataURL()
-  let myPlane = document.getElementById('myPlane')
-  myPlane.setAttribute("material", "src", `url(${data});`);
-  myPlane.setAttribute("material", "side", "double");
-  
-  let r = map(x, 0, width,0, 360)
-  myPlane.setAttribute("rotation", "0" + " 0")
-  myPlane.setAttribute('position', { x: 0, y: 1, z: -1 });
-  
-}
-
-
-
+        // A-FRAME SETUP
+        let data =  buffer.drawingContext.canvas.toDataURL()
+        let myPlane = document.getElementById('myPlane')
+        myPlane.setAttribute("material", "src", `url(${data});`);
+        myPlane.setAttribute("material", "side", "double");
+        
+        let r = map(x, 0, width,0, 360)
+        myPlane.setAttribute("rotation", "0" + " 0")
+        myPlane.setAttribute('position', { x: 0, y: 1, z: -1 });
+    }  
 
 
