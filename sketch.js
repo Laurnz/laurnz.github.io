@@ -20,23 +20,16 @@
         buffer.textFont(myFont);
 
         frameRate(30);
+        createCanvas(0, 0);
         
-        p.background(bg);
+        
 
     }
     
 
     function draw() {
-        buffer.fill('#7f6148');
-
-
-        buffer.textSize(70);
-       
-        buffer.textSize(50);
-        buffer.text(articleOne, -450,200+450, 700);
-
-
-            // A-FRAME SETUP
+        
+        // A-FRAME SETUP
         let data =  buffer.drawingContext.canvas.toDataURL()
         let myPlane = document.getElementById('myPlane')
         myPlane.setAttribute("material", "src", `url(${data});`);
@@ -45,6 +38,11 @@
         let r = map(x, 0, width,0, 360)
         myPlane.setAttribute("rotation", "0" + " 0")
         myPlane.setAttribute('position', { x: 0, y: 1, z: -1 });
+
+        vid = createVideo("vid.mp4");
+        vid.volume(0);
+        vid.autoplay();
+        vid.speed(1);
     }  
 
 
