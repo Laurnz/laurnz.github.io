@@ -17,16 +17,21 @@
     </style>
     </head>
     <body>
-        <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-           
-          <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-            <a-assets>
-              <video id="poster" autoplay loop="false" src="vid.mp4"></video>
-            </a-assets>
-            
-            <a-entity mindar-image-target="targetIndex: 0">
-              <a-video src="#vid" width="9" height="16" position="0 0 -20"></a-video>
-            </a-entity>
-          </a-scene>
+      <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-entity mindar-image-target="targetIndex: 0">
+  
+          <a-entity id="myPlane"
+            shadow="cast:true;"
+            geometry="primitive: plane"   
+            material=""
+            scale="1 1.414"
+            side="double"
+          ></a-entity>
+      
+          <!-- <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane> -->
+        </a-entity>
+      </a-scene>
+      <script src="sketch.js"></script>
     </body>
   </html>
