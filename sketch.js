@@ -1,4 +1,16 @@
+/*
+So, this is an attempt to feed a p5js canvas (or buffer in my case)
+to A-Frame and then put it on a plane.
 
+At the moment I call toDataURL() and then pass that as
+data....which can't be the best way, but it does seem snappy.
+
+Not worked out if you can handle mouseEvents yet. Not likely. 
+I mean, how would you even work out mouseX (on an angled sketch a-entity)?
+
+Tom Smith.
+
+*/
 // Buffer stuff
 let x = 0;
 let buffer;
@@ -273,3 +285,8 @@ if(!pageLoaded) {
   myPlane1.setAttribute("material", "src", `url(${data1});`);
   myPlane2.setAttribute("material", "src", `url(${data2});`);
 }
+
+
+
+
+
